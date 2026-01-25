@@ -1,0 +1,17 @@
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        TreeSet<Integer> t=new TreeSet<>();
+        Set<Integer> inter=new HashSet<>();
+        for (int i:nums1) t.add(i);
+        for(int i:nums2) if(t.contains(i)) inter.add(i);
+        int res[]=new int[inter.size()];
+        int j=0;
+        for(int i: inter){
+            res[j]=i; 
+            j++;
+        }
+        return res;
+        
+        
+    }
+}
