@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isHappy(int n) {
+        String s=String.valueOf(n);
+        Set<Integer> seen=new HashSet<Integer>();
+        int res=n;
+        
+        while(!seen.contains(res)){
+            seen.add(res);
+            res=0;
+            
+            for(int i=0;i<s.length();i++){
+                int x=s.charAt(i)-'0';
+                res+=(x*x);
+            }
+            s=String.valueOf(res);
+            
+            if (res==1) return true;
+        }
+        
+        return false;
+    }
+}
+            
