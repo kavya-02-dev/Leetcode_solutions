@@ -1,0 +1,11 @@
+c#````
+public class Solution {
+    public bool ContainsDuplicate(int[] nums) {
+        HashSet<int> set=new();
+        foreach( int i in nums){
+            set.Add(i);
+        }
+        if(set.Count==nums.Length) return false;
+        return true;
+    }
+}
