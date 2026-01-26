@@ -1,0 +1,16 @@
+class Solution {
+    public String reverseWords(String s) {
+        String []res=s.trim().split("\\s+");
+        List<String> list=Arrays.asList(res);
+        Collections.reverse(list);
+        String op="";
+        for(String i:list){
+            op+=i;
+            op+=" ";
+        }
+        op=op.strip();
+        System.out.print(op);
+
+        return op;
+    }
+}
