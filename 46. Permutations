@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> combinations=new ArrayList<>();
+        if(nums==null || nums.length==0){
+            return combinations;
+        }
+    generatePermutations(0,nums, new ArrayList<>(), combinations);
+        return combinations;
+    }
+    static void generatePermutations(int pos, int[] nums, List<Integer> current, List<List<Integer>> combinations){
+        if (pos==nums.length){
+            combinations.add(new ArrayList<>(current));
+            return;
+        }
+        for(int i=0;i<nums.length;i++){
+            if(current.contains(nums[i])){
+                continue;
+            }
+            current.add(nums[i]);
+            generatePermutations(pos+1, nums, current, combinations);
+            current.remove(current.size()-1);
+        }
+    }
+}
