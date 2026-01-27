@@ -1,0 +1,29 @@
+public class Solution {
+    public IList<IList<int>> PermuteUnique(int[] nums) {
+        
+        IList<IList<int>> combinations=new List<IList<int>>();
+        if(nums==null || nums.Length==0) return combinations;
+        Array.Sort(nums);
+        bool []used=new bool[nums.Length];
+        generatePermutations(used,nums,new List<int>(), combinations);
+        return combinations;
+    }
+    static void generatePermutations(bool[] used, int[] nums, IList<int> current, IList<IList<int>> combinations){
+        if (current.Count==nums.Length){
+            combinations.Add(new List<int>(current));
+            return;
+        }
+        
+        for(int i=0;i<nums.Length;i++){
+            if(used[i]) continue;
+            if((i>0 && nums[i]==nums[i-1])&&(!used[i-1])) continue;
+            else{
+                used[i]=true;
+                current.Add(nums[i]);
+                generatePermutations(used, nums, current, combinations);
+                current.RemoveAt(current.Count-1);
+                used[i]=false;
+            }
+        }
+    }
+}
