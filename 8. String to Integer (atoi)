@@ -1,0 +1,37 @@
+import java.math.BigInteger;
+class Solution {
+    public int myAtoi(String s) {
+        String res="";
+        boolean flag=false;
+        boolean hasVal=false;
+        s=s.trim().strip();
+        boolean sign=false;
+        if(s.equals("-") || s.equals("") || s.equals("+")) return 0;
+        
+        
+        for(int i=0;i<s.length();i++){
+            if (hasVal && (s.charAt(i)<'0' || s.charAt(i)>'9')) break;
+            else if(s.charAt(i)=='-' && !sign && !hasVal && res.length()==0){
+                
+                flag=true;
+                sign=true;
+            }
+            else if(s.charAt(i)=='+' && !hasVal &&!sign  && res.length()==0){
+                sign=true;
+            }
+            else if(s.charAt(i)>='0' && s.charAt(i)<='9'){
+                res+=s.charAt(i);
+                hasVal=true;
+            }
+            else break;
+        }
+        if (res==null || res.isEmpty()) return 0;
+        BigInteger max=BigInteger.valueOf(Integer.MAX_VALUE);
+        BigInteger min=BigInteger.valueOf(Integer.MIN_VALUE);
+        BigInteger big=new BigInteger(res);
+        if(flag) big=big.negate();
+        if(big.compareTo(max)>0) return Integer.MAX_VALUE;
+        if(big.compareTo(min)<0) return Integer.MIN_VALUE;
+        return big.intValue();
+    }
+}
