@@ -1,0 +1,44 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int smallIdx = -1;
+        int secSmallIdx = nums.length - 1;
+        int i;
+
+        for (i = nums.length - 1; i > 0; i--) {
+            if (nums[i] > nums[i - 1]) {
+                smallIdx = i - 1;
+                break;
+            }
+        }
+
+        if (smallIdx == -1) {
+            Arrays.sort(nums);
+            return;
+        }
+
+        for (i = nums.length - 1; i > smallIdx; i--) {
+            if ((nums[i] > nums[smallIdx])) {
+                secSmallIdx = i;
+                break;
+            }
+        }
+
+        if (nums[secSmallIdx] <= nums[smallIdx])
+            secSmallIdx = smallIdx + 1;
+
+        int temp = nums[smallIdx];
+        nums[smallIdx] = nums[secSmallIdx];
+        nums[secSmallIdx] = temp;
+
+        int left = smallIdx + 1;
+        int right = nums.length - 1;
+
+        while (left < right) {
+            int temp2 = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp2;
+            left++;
+            right--;
+        }
+    }
+}
