@@ -1,0 +1,24 @@
+class Solution {
+    public String getPermutation(int n, int k) {
+        List<Integer> values=new ArrayList<>();
+        int fact[] = new int[n + 1];
+        fact[0] = 1;
+
+        for(int i = 1; i <= n; i++)
+        {
+            values.add(i);
+            fact[i] = fact[i - 1] * i;
+        }
+        k--;
+        StringBuilder res = new StringBuilder();
+        for(int i = n; i > 0; i--)
+        {
+            int idx = k / fact[i - 1];
+            res.append(values.get(idx));
+            values.remove(idx);
+            k = k % fact[i - 1];
+
+        }
+        return res.toString();
+    }
+}
