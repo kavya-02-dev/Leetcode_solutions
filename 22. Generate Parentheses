@@ -1,0 +1,35 @@
+class Solution
+{
+    public List<String> generateParenthesis(int n)
+    {
+        int open = 0;
+        int close = 0;
+        List<String> combinations = new ArrayList<>();
+        if (n == 0) return new ArrayList<>();
+        generator(open, close, n, new StringBuilder(), combinations);
+        return combinations;
+
+    }
+    static void generator(int open, int close, int n, StringBuilder current, List<String> combinations)
+    {
+        if (current.length() == (n * 2))
+        {
+            combinations.add(current.toString());
+            return;
+        }
+
+
+        if (open < n)
+        {
+            current.append("(");
+            generator(open + 1, close, n, current, combinations);
+            current.deleteCharAt(current.length() - 1);
+        }
+        if (close < open)
+        {
+            current.append(")");
+            generator(open, close + 1, n, current, combinations);
+            current.deleteCharAt(current.length() - 1);
+        }
+    }
+}
