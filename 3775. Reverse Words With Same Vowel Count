@@ -1,0 +1,53 @@
+class Solution {
+    public String reverseWords(String s) {
+        String []words=s.strip().split(" ");
+        int c=0;
+        if(words.length==1) return s;
+        String str="";
+        str+=words[0];
+        str+=" ";
+        for(int i=0;i<words[0].length();i++){
+            char x=Character.toLowerCase(words[0].charAt(i));
+            if(x=='a' || x=='e' || x=='i' || x=='o' || x== 'u') c++;
+            
+        }
+        for(int i=1;i<words.length;i++){
+            if(vowelCount(words[i],c)){
+                str+=reverse(words[i]);
+                
+                
+            }
+            else{
+                str+=words[i];
+                
+            }
+            
+            if(i!=words.length-1){
+                str+=" ";
+            }
+            
+        }
+        return str;
+    }
+    static boolean vowelCount(String word, int tar){
+        int c=0;
+        for(int i=0;i<word.length();i++){
+            char x=Character.toLowerCase(word.charAt(i));
+            if(x=='a' || x=='e' || x=='i' || x=='o' || x== 'u') c++;
+        }
+        if(c==tar) return true;
+        return false;
+    }
+    static String reverse(String word){
+        int j=word.length()-1;
+        char[] w=word.toCharArray();
+        for(int i=0;i<word.length()/2;i++){
+            char t=w[i];
+            w[i]=w[j];
+            w[j]=t;
+            j--;
+            
+        }
+        return new String(w);
+    }
+}
