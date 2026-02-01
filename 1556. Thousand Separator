@@ -1,0 +1,20 @@
+class Solution {
+    public String thousandSeparator(int n) {
+        StringBuilder str=new StringBuilder();
+        if(n==0) return "0";
+        int c=0;
+        int m=n;
+        while(m>0){
+            if(c==3){
+                str.append('.');
+                c=0;
+            }
+            else{
+                str.append(m%10);
+                c++;
+                m/=10;
+            }
+        }
+        return str.reverse().toString();
+    }
+}
