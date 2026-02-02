@@ -1,0 +1,30 @@
+class Solution {
+    public int[] sortArray(int[] nums) {
+        
+        int[] res=new int[nums.length];
+        int min=nums[0];
+        int max=nums[0];
+        for(int i:nums){
+            min=Math.min(i,min);
+            max=Math.max(i,max);
+        }
+        int buck=(int)Math.sqrt(nums.length);
+        List<Integer>[] bucket=new ArrayList[buck];
+        for(int i=0;i<buck;i++){
+            bucket[i]=new ArrayList<>();
+        }
+        for(int i :nums){
+            int idx=(i-min)*(buck/(max-min+1));
+            bucket[idx].add(i);
+        }
+        int i=0;
+        for (List<Integer> x: bucket){
+            Collections.sort(x);
+            for(int j :x){
+                res[i]=j;
+                i++;
+            }
+        }
+        return res;
+    }
+}
