@@ -1,0 +1,41 @@
+import java.util.*;
+
+class Solution
+{
+    public List<String> topKFrequent(String[] words, int k)
+    {
+        Map<String, Integer> map = new HashMap<>();
+        List<String> res = new ArrayList<>();
+        int max = 0;
+        for (String word:words)
+        {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+            if (map.get(word) > max) max = map.get(word);
+
+        }
+        int bucketsize = max+1;
+        List<String>[] buckets = new ArrayList[bucketsize];
+        for(int i = 0; i < bucketsize; i++)
+        {
+            buckets[i] = new ArrayList<>();
+        }
+        for(String word: map.keySet())
+        {
+            buckets[map.get(word)].add(word);
+        }
+        for(int i = 0; i < bucketsize; i++)
+        {
+            Collections.sort(buckets[i]);
+        }
+        for(int i =max; i >0 && res.size()<k; i--)
+        {
+
+            for (String word: buckets[i]) {
+                res.add(word);
+                if (res.size() == k) break;
+            }
+            
+        }
+        return res;
+    }
+}
