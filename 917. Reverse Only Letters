@@ -1,0 +1,22 @@
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        int l=0;
+        StringBuilder res=new StringBuilder(s);
+        int r=s.length()-1;
+        while(l<r){
+            if(((s.charAt(l)>='a' && s.charAt(l)<='z') || (s.charAt(l)>='A' && s.charAt(l)<='Z')) && ((s.charAt(r)>='a' && s.charAt(r)<='z') || (s.charAt(r)>='A' && s.charAt(r)<='Z'))){
+                char t=res.charAt(l);
+                res.setCharAt(l,res.charAt(r));
+                res.setCharAt(r,t);
+                l++;
+                r--;
+            }
+            else if((s.charAt(l)>='a' && s.charAt(l)<='z') || (s.charAt(l)>='A' && s.charAt(l)<='Z')){
+                r--;
+            
+            }
+            else l++;
+        }
+        return res.toString();
+    }
+}
