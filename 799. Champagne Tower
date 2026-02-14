@@ -14,3 +14,4 @@ class Solution {
         return Math.min(1,dp[row][glass]);
     }
 }
+
