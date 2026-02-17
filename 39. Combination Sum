@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> res=new ArrayList<>();
+        backtrack(res, new ArrayList<>(), candidates, 0, target, 0);
+        return res;
+    }
+    static void backtrack(List<List<Integer>> res,List<Integer> path, int[] nums,int currSum, int tar, int idx){
+        if(currSum==tar){
+            res.add(new ArrayList<>(path)); 
+//important. path is a mutable list.
+//hence it points to the same heap storage resulting in empty lists always. 
+//so crwste new AreayList while appending.
+            return;
+        }
+        if(currSum>tar || idx==nums.length) return;
+        path.add(nums[idx]);
+        backtrack(res, path, nums, currSum+nums[idx], tar, idx);
+        path.remove(path.size()-1);
+        backtrack(res, path, nums, currSum, tar, idx+1);
+    }
+}
