@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res=new ArrayList<>();
+        Arrays.sort(candidates);
+        backtrack(res, 0, candidates, target, 0, new ArrayList<>());
+        return res;
+    }
+    static void backtrack(List<List<Integer>> res, int idx, int[] nums, int tar, int curSum, List<Integer> path){
+        if(tar==curSum){
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        
+        if(curSum>tar || idx==nums.length) return;
+        for(int i=idx;i<nums.length;i++){
+            if(i>idx && nums[i]==nums[i-1]) continue;
+            path.add(nums[i]);
+            backtrack(res, i+1, nums, tar, curSum+nums[i], path);
+            path.remove(path.size()-1);
+        }
+        
+        
+    }
+}
