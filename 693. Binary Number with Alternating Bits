@@ -1,0 +1,19 @@
+class Solution {
+    public boolean hasAlternatingBits(int n) {
+        int startBit=n&1;
+        int x=n;
+        while(x>0){
+            if((x&1)==startBit){
+                x=x>>1;
+            }
+            else return false;
+            if(x>0){
+                if((x&1)!=startBit){
+                    x=x>>1;
+                }
+                else return false;
+            }
+        }
+        return true;
+    }
+}
