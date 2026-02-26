@@ -1,0 +1,15 @@
+class Solution {
+    public boolean judgeCircle(String s) {
+        int ud=0;
+        int lr=0;
+        for(int i=0;i<s.length();i++){
+            char x=s.charAt(i);
+            if(x=='U') ud++;
+            else if (x=='D') ud--;
+            else if (x=='L') lr--;
+            else if (x=='R') lr++;
+        }
+        return ud==0 && lr==0;
+        
+    }
+}
