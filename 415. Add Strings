@@ -1,0 +1,20 @@
+class Solution {
+    public String addStrings(String num1, String num2) {
+        int carry=0;
+        int i=num1.length()-1;
+        int j=num2.length()-1;
+        StringBuilder res=new StringBuilder();
+        while(i>=0 || j>=0 || carry>0){
+            int x;
+            int y;
+            if(i>=0) x=num1.charAt(i--)-'0';
+            else x=0;
+            if(j>=0) y=num2.charAt(j--)-'0';
+            else y=0;
+            int sum=x+y+carry;
+            res.append(sum%10);
+            carry=sum/10;
+        }
+        return res.reverse().toString();
+    }
+}
