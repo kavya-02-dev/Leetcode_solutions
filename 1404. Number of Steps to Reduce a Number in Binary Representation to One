@@ -1,0 +1,20 @@
+import java.math.BigInteger;
+class Solution {
+    public int numSteps(String s) {
+        BigInteger x=new BigInteger(s,2);
+        BigInteger one=BigInteger.ONE;
+        BigInteger two=new BigInteger("2");
+        int c=0;
+        while(x.compareTo(one)>0){
+            if(x.mod(two).equals(BigInteger.ZERO)){
+                x=x.divide(two);
+                c++;
+            }
+            else{
+                x=x.add(one);
+                c++;
+            }
+        }
+        return c;
+    }
+}
