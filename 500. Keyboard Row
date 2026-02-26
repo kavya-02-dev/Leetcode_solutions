@@ -1,0 +1,33 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        List<String> res=new ArrayList<>();
+        Set<Character> r1=new HashSet<>(Arrays.asList('q','w','e','r','t','y','u','i','o','p'));
+        Set<Character> r2=new HashSet<>(Arrays.asList('a','s','d','f','g','h','j','k','l'));
+        Set<Character> r3=new HashSet<>(Arrays.asList('z','x','c','v','b','n','m'));
+        for(int i=0;i<words.length;i++){
+            String word=words[i].toLowerCase();
+            if(r1.contains(word.charAt(0))){
+                if(check(word, r1)) res.add(words[i]);
+            }
+            else if(r2.contains(word.charAt(0))){
+                if(check(word, r2)) res.add(words[i]);
+            }
+            else if(r3.contains(word.charAt(0))){
+                if(check(word, r3)) res.add(words[i]);
+            }
+        }
+        String[] fin=new String[res.size()];
+        int i=0;
+        for(String x: res){
+            fin[i++]=x;
+        }
+        return fin;
+        
+    }
+    boolean check(String w, Set<Character> r){
+        for(int i=0;i<w.length();i++){
+            if(!r.contains(w.charAt(i))) return false;
+        }
+        return true;
+    }
+}
