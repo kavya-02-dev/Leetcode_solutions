@@ -1,0 +1,18 @@
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int countUp=0;
+        int countLow=0;
+        for(char c: word.toCharArray()){
+            if(c>='A' && c<='Z'){
+                countUp++;
+            }
+            else if(c>='a' && c<='z'){
+                countLow++;
+            }
+            
+        }
+        if(countUp==0 || countLow==0) return true;
+        else if(countUp==1 && (word.charAt(0)>='A' && word.charAt(0)<='Z')) return true;
+        return false;
+    }
+}
