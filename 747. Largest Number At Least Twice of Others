@@ -1,0 +1,25 @@
+class Solution {
+    public int dominantIndex(int[] nums) {
+        int fmax=0;
+        int smax=0;
+        int fi=-1;
+        int si=-1;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>smax){
+                if(nums[i]>fmax){
+                    smax=fmax;
+                    si=fi;
+                    fmax=nums[i];
+                    fi=i;
+                    
+                }
+                else{
+                    smax=nums[i];
+                    si=i;
+                }
+            }
+        }
+        if((smax*2)<=fmax) return fi;
+        return -1;
+    }
+}
