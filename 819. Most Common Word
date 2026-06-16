@@ -1,0 +1,24 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        Set<String> set=new HashSet<>(Arrays.asList(banned));
+        Map<String, Integer> map=new HashMap<>();
+        paragraph=paragraph.toLowerCase();
+        paragraph=paragraph.replaceAll("[^a-z]"," ");
+        
+        String[] para=paragraph.split("\\s+");
+        int max=0;
+        String word="";
+        for(String s: para){
+            
+            if(!set.contains(s)){
+                
+                map.put(s,map.getOrDefault(s,0)+1);
+                if(map.get(s)>max){
+                    max=map.get(s);
+                    word=s;
+                }
+            }
+        }
+        return word;
+    }
+}
