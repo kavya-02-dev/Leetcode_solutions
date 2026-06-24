@@ -1,0 +1,16 @@
+class Solution {
+    public boolean checkGoodInteger(int n) {
+        int ds=0;
+        int m=n;
+        int ss=0;
+        while(m>0){
+            
+            int t=m%10;
+            ds+=t;
+            ss+=Math.pow(t,2);
+            m/=10;
+        }
+        if((ss-ds)>= 50) return true;
+        return false;
+    }
+}
