@@ -1,0 +1,26 @@
+class Solution {
+    public String smallestPalindrome(String s) {
+        int num[]=new int[26];
+        if(s.length()==1) return s;
+        StringBuilder res=new StringBuilder();
+        for(char x:s.toCharArray()){
+            num[x-'a']++;
+        }
+        char t='8';
+        for(int i=0;i<26;i++){
+            
+            while((num[i]/2)!=0){
+                res.append((char)(i+'a'));
+                num[i]-=2;
+            }
+            if(num[i]==1){
+                t=((char)(i+'a'));
+            }
+        }
+        StringBuilder rev=new StringBuilder(res).reverse();
+        if(t!='8') res.append(t);
+         
+        res.append(rev);
+        return res.toString();
+    }
+}
