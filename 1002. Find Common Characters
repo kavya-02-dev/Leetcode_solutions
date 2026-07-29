@@ -1,0 +1,23 @@
+class Solution {
+    public List<String> commonChars(String[] words) {
+        Map<Character, int[]> map=new HashMap<>();
+        int x=0;
+        for(String s:words){
+            
+            for(char c:s.toCharArray()){
+                map.putIfAbsent(c,new int[words.length]);
+                map.get(c)[x]++;
+            }
+            x++;
+        }
+        List<String> res=new ArrayList<>();
+        for(Map.Entry<Character, int[]> e: map.entrySet()){
+            int a=Arrays.stream(e.getValue()).min().getAsInt();
+            while(a!=0){
+                res.add(e.getKey().toString());
+                a--;
+            }
+        }
+        return res;
+    }
+}
