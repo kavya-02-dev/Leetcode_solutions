@@ -1,0 +1,29 @@
+class Solution {
+    public int minimumPushes(String word) {
+        
+        int n=word.length();
+        int res=0;
+        int x=1;
+        int c=0;
+        int freq[]=new int[26];
+        List<Integer> l=new ArrayList<>();
+        for(char y:word.toCharArray()){
+            freq[y-'a']++;
+        }
+        for(int s:freq) if(s!=0) l.add(s);
+        Collections.sort(l,Collections.reverseOrder());
+        int j=0;
+        int m=0;
+        while(j<l.size()){
+            while(m<8 && j<l.size()){
+                res+=l.get(j)*x;
+                j++;
+                m++;
+            }
+            m=0;
+            x++;
+            
+        }
+        return res;
+    }
+}
