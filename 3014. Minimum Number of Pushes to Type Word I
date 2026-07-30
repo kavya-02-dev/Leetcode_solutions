@@ -1,0 +1,19 @@
+class Solution {
+    public int minimumPushes(String word) {
+        int n=word.length();
+        int res=0;
+        int x=1;
+        while(n!=0){
+            if(n<=8){
+                res+=(n*x);
+                n=0;
+            }
+            else{
+                res+=(8*x);
+                x++;
+                n-=8;
+            }
+        }
+        return res;
+    }
+}
