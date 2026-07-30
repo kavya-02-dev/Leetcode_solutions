@@ -1,0 +1,11 @@
+class Solution {
+    public int countKeyChanges(String s) {
+        String x=s.toLowerCase();
+        int c=0;
+        for(int i=1;i<s.length();i++){
+            
+            if(x.charAt(i-1)!=x.charAt(i)) c++;
+        }
+        return c;
+    }
+}
