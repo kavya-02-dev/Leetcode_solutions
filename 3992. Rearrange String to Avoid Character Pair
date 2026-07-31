@@ -1,0 +1,13 @@
+class Solution {
+    public String rearrangeString(String s, char x, char y) {
+        StringBuilder res=new StringBuilder();
+        StringBuilder add=new StringBuilder();
+        for(char c: s.toCharArray()){
+            if(c==y) res.insert(0,c);
+            else if(c==x) add.append(c);
+            else res.append(c);
+        }
+        res.append(add);
+        return res.toString();
+    }
+}
