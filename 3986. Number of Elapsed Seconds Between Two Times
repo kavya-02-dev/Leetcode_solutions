@@ -1,0 +1,13 @@
+class Solution {
+    public int secondsBetweenTimes(String startTime, String endTime) {
+        String[] start=startTime.split(":");
+        String[] end=endTime.split(":");
+        int res=0;
+        
+        for(int i=2;i>=0;i--){
+            res+=(Integer.valueOf(end[Math.abs(i-2)])*(int)Math.pow(60,i))-(Integer.valueOf(start[Math.abs(i-2)])*(int)Math.pow(60,i));
+            
+        }
+        return res;
+    }
+}
