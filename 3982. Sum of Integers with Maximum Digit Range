@@ -1,0 +1,33 @@
+class Solution {
+    public int maxDigitRange(int[] nums) {
+        List<Integer> map=new ArrayList<>();
+        int max=0;
+        int sum=0;
+        for(int n:nums){
+            int x=range(n);
+            if(x>=max){
+                if(x>max){
+                    map.clear();
+                    max=x;
+                }
+                map.add(n);
+            }
+        }
+        for(int y:map){
+            sum+=y;
+        }
+        return sum;
+    }
+    int range(int n){
+        int l=0;
+        int s=9;
+        while(n!=0){
+            int x=n%10;
+            n/=10;
+            if(l<x) l=x;
+            if(s>x) s=x;
+            
+        }
+        return l-s;
+    }
+}
