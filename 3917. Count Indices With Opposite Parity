@@ -1,0 +1,21 @@
+class Solution {
+    public int[] countOppositeParity(int[] nums) {
+        int oddEven=0;
+        int evenOdd=0;
+        
+        int res[]=new int[nums.length];
+        for(int i=nums.length-1;i>=0;i--){
+            if((nums[i]&1)==0){
+                res[i]=evenOdd;
+                
+                oddEven++;
+                
+            }
+            else{
+                res[i]=oddEven;
+                evenOdd++;
+            }
+        }
+        return res;
+    }
+}
