@@ -1,0 +1,19 @@
+class Solution {
+    public int firstStableIndex(int[] nums, int k) {
+        int tab[]=new int[nums.length];
+        int n=nums.length;
+        int maxl=0;
+        int minr=Integer.MAX_VALUE;
+        for(int j=n-1;j>=0;j--){
+            minr=Math.min(minr,nums[j]);
+            tab[j]=minr;
+        }
+        for(int i=0;i<n;i++){
+            maxl=Math.max(maxl,nums[i]);
+            if(maxl-tab[i]<=k){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
