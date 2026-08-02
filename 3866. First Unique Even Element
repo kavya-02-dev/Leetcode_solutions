@@ -1,0 +1,15 @@
+class Solution {
+    public int firstUniqueEven(int[] nums) {
+        Set<Integer> set=new LinkedHashSet<>();
+        Set<Integer> used=new HashSet<>();
+        for(int x:nums){
+            if(((x&1)==0) && !set.contains(x) &&!used.contains(x)) set.add(x);
+            else{
+                set.remove(x);
+                used.add(x);
+            }
+        }
+        if(set.size()==0) return -1;
+        return set.iterator().next();
+    }
+}
