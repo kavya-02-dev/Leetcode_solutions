@@ -1,0 +1,20 @@
+class Solution {
+    public int[] minDistinctFreqPair(int[] nums) {
+        int tab[]=new int[101];
+        int res[]=new int[2];
+        for(int x:nums){
+            tab[x]++;
+        }
+        int c=0;
+        int freq1=0;
+        for(int i=1;i<101;i++){
+            if(c<2 && tab[i]!=0 && tab[i]!=freq1){
+                res[c]=i;
+                freq1=tab[i];
+                c++;
+            }
+        }
+        if(c<2) return new int[]{-1,-1};
+        return res;
+    }
+}
