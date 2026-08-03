@@ -1,0 +1,24 @@
+class Solution {
+    Integer dp[];
+    public String stoneGameIII(int[] stoneValue) {
+        dp=new Integer[stoneValue.length];
+        int res=solve(stoneValue,0,stoneValue.length-1);
+        return (res>0)?"Alice":((res==0)?"Tie":"Bob");
+    }
+    int solve(int []arr, int i, int j){
+        if(i>j) return 0;
+        if(i==j) return arr[i];
+        if(dp[i]!=null) return dp[i];
+        int x=arr[i]-solve(arr,i+1,j);
+        if(i+1<=j)
+            x=Math.max(x,arr[i]+arr[i+1]-solve(arr,i+2,j));
+        if(i+2<=j)
+            x=Math.max(x,arr[i]+arr[i+2]+arr[i+1]-solve(arr,i+3,j));
+            
+            dp[i]=x;;
+        return dp[i];
+            
+        
+        
+    }
+}
