@@ -1,0 +1,11 @@
+class Solution {
+    public String largestEven(String s) {
+        
+        int i=0;
+        for(i=s.length()-1;i>=0;i--){
+            if((Integer.valueOf(s.charAt(i))&1)==0) break;
+            
+        }
+        return s.substring(0,i+1);
+    }
+}
