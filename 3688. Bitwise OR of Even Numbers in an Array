@@ -1,0 +1,9 @@
+class Solution {
+    public int evenNumberBitwiseORs(int[] nums) {
+      int x=0;
+        for(int y:nums){
+            if((y&1)==0) x=x|y;
+        }
+        return x;
+    }
+}
