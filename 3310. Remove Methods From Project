@@ -19,7 +19,7 @@ class Solution {
                     visited[neighbour]=true;
                     q.add(neighbour);
                 }
-            }
+            } 
         }
         List<Integer> res=new ArrayList<>();
         if(c==n) return res;
