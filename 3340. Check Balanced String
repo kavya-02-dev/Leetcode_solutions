@@ -1,0 +1,48 @@
+class Solution {
+    public boolean isBalanced(String num) {
+        int even=0;
+        int odd=0;
+        int i=0;
+        int[] nums=Arrays.stream(num.split(""))
+                  .mapToInt(Integer::parseInt)
+                  .toArray();
+        int j=num.length()-1;
+        boolean fe=false;
+        boolean fo=true;
+        if(num.length()%2==0){
+            while(i<=j){
+                if(i%2==0){
+                    even+=nums[i++];
+                    odd+=nums[j--];
+                }
+                else{
+                    even+=nums[j--];
+                    odd+=nums[i++];
+                }
+            }
+            
+        }
+        else{
+            while(i!=j){
+                if(((i+1)%2)==0){
+                    even+=nums[i++];
+                    even+=nums[j--];
+                    fe=false;
+                    fo=true;
+                }
+                else{
+                    odd+=nums[i++];
+                    odd+=nums[j--];
+                    fo=false;
+                    fe=true;
+                }
+            }
+            
+            if(fo) odd+=nums[i];
+            if(fe) even+=nums[i];
+            
+        }
+        if(odd==even) return true;
+        return false;
+    }
+}
