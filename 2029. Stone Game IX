@@ -1,0 +1,11 @@
+class Solution {
+    public boolean stoneGameIX(int[] stones) {
+        int r[]=new int[3];
+        for(int x: stones){
+            r[x%3]++;
+        }
+        if(r[0]%2==0) return r[1]>0 && r[2]>0;
+        return Math.abs(r[2]-r[1])>2;
+    }
+    
+}
