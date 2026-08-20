@@ -1,0 +1,25 @@
+class Solution {
+    public int[] resultArray(int[] nums) {
+        int res[]=new int[nums.length];
+        List<Integer> arr2=new ArrayList<>();
+        int x=nums[0];
+        res[0]=x;
+        int j=1;
+        int y=nums[1];
+        arr2.add(y);
+        int i;
+        for( i=2;i<nums.length;i++){
+            if(x>y){
+                res[j++]=nums[i];
+                x=nums[i];
+            }
+            else{
+                arr2.add(nums[i]);
+                y=nums[i];
+            }
+        }
+        for(int e:arr2) res[j++]=e;
+        return res;
+        
+    }
+}
