@@ -1,0 +1,11 @@
+class Solution {
+    public boolean isPalindromic(String s) {
+        StringBuilder x=new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            x.append(String.format("%8s",Integer.toBinaryString(s.charAt(i))).replace(' ','0'));
+        }
+        String res=x.toString();
+        if(res.equals(x.reverse().toString())) return true;
+        return false;
+    }
+}
