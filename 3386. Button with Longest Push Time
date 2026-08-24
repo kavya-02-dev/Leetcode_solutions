@@ -1,0 +1,17 @@
+class Solution {
+    public int buttonWithLongestTime(int[][] events) {
+        int res=Integer.MAX_VALUE;
+        int last =0;
+        int diff=0;
+        for(int e[]: events){
+            int curDif=e[1]-last;
+            if(curDif>diff){
+                res=e[0];
+                diff=curDif;
+            }
+            if(diff==curDif) res=Math.min(res, e[0]);
+            last=e[1];
+        }
+        return res;
+    }
+}
