@@ -1,0 +1,29 @@
+class Solution {
+    public int[] separateDigits(int[] nums) {
+        int digits=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0) digits++;
+            else{
+                int num=nums[i];
+                while(num>0){
+                    num/=10;
+                    digits++;
+                }
+            }
+        }
+        int res[]=new int[digits--];
+        
+        for(int num=nums.length-1;num>=0;num--){
+            int val=nums[num];
+            if(val==0) res[digits--]=0;
+            else{
+                while(val>0){
+                    res[digits--]=val%10;
+                    val/=10;
+                    
+                }
+            }
+        }
+        return res;
+    }
+}
