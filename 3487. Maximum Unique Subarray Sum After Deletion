@@ -1,0 +1,21 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        Set<Integer> set=new HashSet<>();
+        
+        int sum=0;
+        boolean flag=false;
+        int maxVal=Integer.MIN_VALUE;
+        for(int num: nums){
+            
+            if(num>=0 && !set.contains(num)){
+                flag=true;
+                sum+=num;
+                set.add(num);
+            }
+            else if(!flag) maxVal=Math.max(maxVal,num);
+            
+        }
+        if(!flag) return maxVal;
+        return sum;
+    }
+}
