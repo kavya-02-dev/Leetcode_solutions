@@ -1,0 +1,15 @@
+class Solution {
+    public boolean scoreBalance(String s) {
+        int sum=0;
+        for(char x:s.toCharArray()){
+            sum+=(x-'a')+1;
+        }
+        if((sum&1)!=0) return false;
+        int mid=0;
+        for(char x:s.toCharArray()){
+            mid+=(x-'a')+1;
+            if(mid==(sum/2)) return true;
+        }
+        return false;
+    }
+}
