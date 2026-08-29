@@ -1,0 +1,34 @@
+class Solution {
+    public String majorityFrequencyGroup(String s) {
+        Map<Integer,List<Character>> map=new HashMap<>();
+        int len=0;
+        int freq[]=new int[26];
+        int sum=0;
+        for(char c: s.toCharArray()){
+            freq[c-'a']++;
+        }
+        String res="";
+        for(int i=0;i<26;i++){
+            if(freq[i]!=0){
+                map.putIfAbsent(freq[i],new ArrayList());
+                map.get(freq[i]).add((char)(i+'a'));
+                if(map.get(freq[i]).size()>len){
+                    len=map.get(freq[i]).size();
+                    sum=len*freq[i];
+                    res=map.get(freq[i]).stream()
+                 .map(String::valueOf)
+                 .collect(Collectors.joining());;
+                }
+                else if(map.get(freq[i]).size()==len){
+                    if(sum<len*freq[i]){
+                        sum=len*freq[i];
+                        res=map.get(freq[i]).stream()
+                 .map(String::valueOf)
+                 .collect(Collectors.joining());
+                    }
+                    }
+            }
+        }
+        return res.toString();
+    }
+}
