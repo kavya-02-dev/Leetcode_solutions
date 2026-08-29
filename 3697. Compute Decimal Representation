@@ -1,0 +1,27 @@
+class Solution {
+    public int[] decimalRepresentation(int n) {
+        int i=0;
+        int zero=0;
+        int temp[]=new int[10];
+        while(n>0){
+            if(zero==0){
+                if((n%10)!=0) temp[i++]=n%10;
+                
+            }
+            else{
+                int t=((n%10)*(int)Math.pow(10,zero));
+                
+                if(t!=0) temp[i++]=t;
+            }
+            
+            zero++;
+            n/=10;
+        }
+        int res[]=new int[i];
+        int k=0;
+        for(int j=i-1;j>=0;j--){
+            res[k++]=temp[j];
+        }
+        return res;
+    }
+}
