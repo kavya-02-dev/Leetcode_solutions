@@ -1,0 +1,22 @@
+class Solution {
+    public int[] sortByReflection(int[] nums) {
+       Integer[] arr=Arrays.stream(nums).boxed().toArray(Integer[]::new);
+       Arrays.sort(arr, (a,b)->{
+           int x=reverse(a);
+           int y=reverse(b);
+           if(x!=y) return x-y;
+           else return a-b;
+       });
+    
+    return Arrays.stream(arr).mapToInt(Integer::intValue).toArray();
+    }
+    int reverse(int n){
+        int res=0;
+        while(n>0){
+            res<<=1;
+            res=res|(n&1);
+            n>>=1;
+        }
+        return res;
+    }
+}
