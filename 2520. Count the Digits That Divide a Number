@@ -1,0 +1,10 @@
+class Solution {
+    public int countDigits(int num) {
+        String val=String.valueOf(num);
+        int res=0;
+        for(char x:val.toCharArray()){
+            if(num%(Integer.valueOf(x)-'0')==0) res++;
+        }
+        return res;
+    }
+}
