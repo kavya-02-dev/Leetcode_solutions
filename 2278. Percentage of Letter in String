@@ -1,0 +1,9 @@
+class Solution {
+    public int percentageLetter(String s, char letter) {
+        int sum=0;
+        for(char c:s.toCharArray()){
+            if(c==letter) sum++;
+        }
+        return (int)((sum*100)/s.length());
+    }
+}
