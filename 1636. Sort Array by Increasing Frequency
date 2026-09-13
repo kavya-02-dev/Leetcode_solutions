@@ -1,0 +1,22 @@
+class Solution {
+    public int[] frequencySort(int[] nums) {
+        Map<Integer,Integer> freq=new HashMap<>();
+        List<Integer> res=new ArrayList<>();
+        for(int x: nums){
+            freq.put(x,freq.getOrDefault(x,0)+1);
+            res.add(x);
+        }
+    
+        Collections.sort(res, (a,b)->{
+            if(freq.get(a)!=freq.get(b)) return freq.get(a) - freq.get(b);
+        return b-a;
+        });
+            
+        int sol[]=new int[nums.length];
+        int i=0;
+        for(int y:res){
+            sol[i++]=y;
+        }
+        return sol;
+    }
+}
