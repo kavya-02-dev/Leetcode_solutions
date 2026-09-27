@@ -1,0 +1,16 @@
+class Solution {
+    public int maxFreqSum(String s) {
+        int freq[]=new int[26];
+        int maxV=0;
+        int maxC=0;
+        for(char c: s.toCharArray()){
+            freq[(int)(c-'a')]++;
+            if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
+                if(freq[(int)(c-'a')]>maxV) maxV=freq[(int)(c-'a')];
+            }
+            else if(freq[(int)(c-'a')]>maxC) maxC=freq[(int)(c-'a')];
+        }
+        
+        return maxV+maxC;
+    }
+}
