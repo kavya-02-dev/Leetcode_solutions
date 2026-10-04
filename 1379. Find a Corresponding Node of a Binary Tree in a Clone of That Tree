@@ -1,0 +1,26 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+class Solution {
+    public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+          TreeNode res=post(cloned, target.val);
+        return res;
+    }
+    final TreeNode post(TreeNode cloned, int t){
+        if(cloned==null) return null;
+        if(cloned.val==t) return cloned;
+        TreeNode res=post(cloned.left, t);
+        if(res!=null) return res;
+        res=post(cloned.right, t);
+        if(res!=null) return res;
+        
+        return null;
+    }
+}
