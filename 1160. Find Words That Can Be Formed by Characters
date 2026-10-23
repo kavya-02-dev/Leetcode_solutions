@@ -1,0 +1,21 @@
+class Solution {
+    public int countCharacters(String[] words, String chars) {
+        int res=0;
+        int freq[]=new int[26];
+        for(char c:chars.toCharArray()){
+            freq[(int)c-'a']++;
+        }
+        for(String s:words){
+            if(check(s, freq)) res+=s.length();
+        }
+        return res;
+    }
+    boolean check(String s, int[] original){
+        int freq[]=original.clone();
+        for(char c:s.toCharArray()){
+            if(freq[(int)c-'a']<1) return false;
+            else freq[(int)c-'a']--;
+        }
+        return true;
+    }
+}
