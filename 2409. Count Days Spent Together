@@ -1,0 +1,23 @@
+class Solution {
+    public int countDaysTogether(String arriveAlice, String leaveAlice, String arriveBob, String leaveBob) {
+        int month[]={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int aliceAD=((int)(arriveAlice.charAt(3)-'0')*10)+(int)(arriveAlice.charAt(4)-'0');
+        int aliceLD=((int)(leaveAlice.charAt(3)-'0')*10)+(int)(leaveAlice.charAt(4)-'0');
+        int aliceAM=((int)(arriveAlice.charAt(0)-'0')*10)+(int)(arriveAlice.charAt(1)-'0');
+        int aliceLM=((int)(leaveAlice.charAt(0)-'0')*10)+(int)(leaveAlice.charAt(1)-'0');
+
+        int bobAD=((int)(arriveBob.charAt(3)-'0')*10)+(int)(arriveBob.charAt(4)-'0');
+        int bobLD=((int)(leaveBob.charAt(3)-'0')*10)+(int)(leaveBob.charAt(4)-'0');
+        int bobAM=((int)(arriveBob.charAt(0)-'0')*10)+(int)(arriveBob.charAt(1)-'0');
+        int bobLM=((int)(leaveBob.charAt(0)-'0')*10)+(int)(leaveBob.charAt(1)-'0');
+        for(int i=0;i<aliceAM-1;i++) aliceAD+=month[i];
+        for(int i=0;i<aliceLM-1;i++) aliceLD+=month[i];
+        for(int i=0;i<bobAM-1;i++) bobAD+=month[i];
+        for(int i=0;i<bobLM-1;i++) bobLD+=month[i];
+
+        int start=Math.max(aliceAD,bobAD);
+        int end=Math.min(aliceLD,bobLD);
+
+        return Math.max(0,end-start+1);
+    }
+}
